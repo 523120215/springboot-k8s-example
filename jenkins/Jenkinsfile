@@ -47,7 +47,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
                 sh 'printenv'
 
                 gitCommit = sh(script: "git rev-parse HEAD", returnStdout: true).trim()
-                shortGitCommit = "${gitCommit[0..10]}"
+                shortGitCommit = "${currentBuild.number}${gitCommit[0..10]}"
                 previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
 
                 echo "gitCommit = ${gitCommit}"
