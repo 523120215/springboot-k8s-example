@@ -94,8 +94,8 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
                 sh "sed -i \"s/lusyoe\\/k8s-example/${params.REGISTRY_URL}\\/${params.DOCKER_USER}\\/k8s-example:${shortGitCommit}/g\" k8s-example.yaml"
                 //sh "kubectl --kubeconfig=/root/.kube/config apply -f k8s-example.yaml"
                 //sh "kubectl  create -f jenkins/admin-rbac.yaml"
-                sh "kubectl get ns |grep -w k8s-example || kubectl  create ns k8s-example"
-                sh "kubectl  apply -f k8s-example.yaml -n k8s-example"
+                //sh "kubectl get ns |grep -w k8s-example || kubectl  create ns k8s-example"
+                //sh "kubectl  apply -f k8s-example.yaml -n k8s-example"
                 //kubectl get svc k8s-example -n k8s-example -o yaml |sed 's/ClusterIP/LoadBalancer/' |kubectl replace -f -
             }
         }
