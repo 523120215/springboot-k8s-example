@@ -108,7 +108,11 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
                 //sh "helm upgrade --install k8s-example charts/"
             }
         }
-
+        container('jnlp') {    
+            stage("Archive") {
+                archiveArtifacts artifacts: 'demo-app-*.tgz', fingerprint: true
+                 }
+             }
     }
 }
 
