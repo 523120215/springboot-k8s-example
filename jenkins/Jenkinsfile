@@ -110,7 +110,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
         }
         container('jnlp') {    
             stage("Archive") {
-                archiveArtifacts artifacts: 'demo-app-*.tgz', fingerprint: true
+                archiveArtifacts artifacts: '*.*', fingerprint: true, allowEmptyArchive: true
                  }
              }
     }
