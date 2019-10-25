@@ -74,12 +74,12 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
 
             stage('docker-build') {
                 sh "docker build . -t ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:${shortGitCommit}"
-                sh "docker tag ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:${shortGitCommit}  ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:release.1.0.0"
+                sh "docker tag ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:${shortGitCommit}  ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:release.2.0.0"
             }
 
             stage('docker-push') {
                 sh "docker push ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:${shortGitCommit}"
-                sh "docker push ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:release.1.0.0"
+                sh "docker push ${params.REGISTRY_URL}/${params.DOCKER_USER}/k8s-example:release.2.0.0"
             }
 
             stage('docker-remove') {
