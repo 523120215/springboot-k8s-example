@@ -112,22 +112,24 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
             stage("Archive") {
                 archiveArtifacts artifacts: 'screenshots/*.*', fingerprint: true, allowEmptyArchive: true
                  }
-             }catch(Exception e) {
-        currentBuild.result = "FAILURE"
-    }finally {
-        // 获取执行状态
-        def currResult = currentBuild.result ?: 'SUCCESS' 
-        // 判断执行任务状态，根据不同状态发送邮件
-        stage('email'){
-            if (currResult == 'SUCCESS') {
-                echo "发送成功邮件"
-                emailext(subject: '任务执行成功',to: '3*****7@qq.com',body: '''任务已经成功构建完成...''')
-            }else {
-                echo "发送失败邮件"
-                emailext(subject: '任务执行失败',to: '3*****7@qq.com',body: '''任务执行失败构建失败...''')
-            }
-        }
-    }
+             }
+            
+//            catch(Exception e) {
+//        currentBuild.result = "FAILURE"
+//    }finally {
+//        // 获取执行状态
+//        def currResult = currentBuild.result ?: 'SUCCESS' 
+//        // 判断执行任务状态，根据不同状态发送邮件
+//        stage('email'){
+//            if (currResult == 'SUCCESS') {
+//                echo "发送成功邮件"
+//                emailext(subject: '任务执行成功',to: '3*****7@qq.com',body: '''任务已经成功构建完成...''')
+//            }else {
+//                echo "发送失败邮件"
+//                emailext(subject: '任务执行失败',to: '3*****7@qq.com',body: '''任务执行失败构建失败...''')
+//            }
+//        }
+//    }
     }
      
 }
