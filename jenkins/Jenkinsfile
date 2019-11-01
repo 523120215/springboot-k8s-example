@@ -112,9 +112,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
             stage("Archive") {
                 archiveArtifacts artifacts: 'screenshots/*.*', fingerprint: true, allowEmptyArchive: true
                  }
-             }
-    }
-     catch(Exception e) {
+             }catch(Exception e) {
         currentBuild.result = "FAILURE"
     }finally {
         // 获取执行状态
@@ -130,6 +128,8 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
             }
         }
     }
+    }
+     
 }
 
 // vim: ft=groovy
