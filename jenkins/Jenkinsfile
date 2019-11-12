@@ -66,12 +66,12 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
 
                 sh 'mvn test'
             } 
-              post {
+
+        }     post {
                  always {
                   junit 'build/reports/*.xml'
                         }
                    }    
-        }
 
         container('docker') {
 
