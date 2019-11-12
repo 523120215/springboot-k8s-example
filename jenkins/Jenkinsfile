@@ -56,7 +56,8 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
                 echo "shortGitCommit = ${shortGitCommit}"
                 echo "previousGitCommit = ${previousGitCommit}"
             }
-
+               
+                //https://jenkins.io/doc/pipeline/tour/tests-and-artifacts/
             stage('pacakge') {
 
                 sh 'mvn clean package -Dmaven.test.skip=true -s ./settings.xml'
@@ -64,7 +65,12 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
             stage('Test') {
 
                 sh 'mvn test'
-            }    
+            } 
+              post {
+                 always {
+                  junit 'build/reports/*.xml'
+                        }
+                   }    
         }
 
         container('docker') {
@@ -116,7 +122,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
         }
         container('jnlp') {    
             stage("Archive") {
-                archiveArtifacts artifacts: '*.*', fingerprint: true, allowEmptyArchive: true
+                archiveArtifacts artifacts: 'build/archive/*.*', fingerprint: true, allowEmptyArchive: true
                  }
              }
             
