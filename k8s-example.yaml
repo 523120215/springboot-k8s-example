@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: k8s-example
-        image: lusyoe/k8s-example
+        image: hbstarjason/k8s-example
         resources:
           requests:
             cpu: 100m
