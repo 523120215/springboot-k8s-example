@@ -93,7 +93,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
 
         container('kubectl') {
             stage('k8s deploy') {
-                sh "sed -i \"s/lusyoe\\/k8s-example/${params.REGISTRY_URL}\\/${params.DOCKER_USER}\\/k8s-example:${shortGitCommit}/g\" k8s-example.yaml"
+                sh "sed -i \"s/hbstarjason\\/k8s-example/${params.REGISTRY_URL}\\/${params.DOCKER_USER}\\/k8s-example:${shortGitCommit}/g\" k8s-example.yaml"
                 //sh "kubectl --kubeconfig=/root/.kube/config apply -f k8s-example.yaml"
                 //sh "kubectl  create -f jenkins/admin-rbac.yaml"
                 //sh "kubectl get ns |grep -w k8s-example || kubectl  create ns k8s-example"
