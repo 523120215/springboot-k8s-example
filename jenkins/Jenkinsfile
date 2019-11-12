@@ -61,6 +61,10 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
 
                 sh 'mvn clean package -Dmaven.test.skip=true -s ./settings.xml'
             }
+            stage('Test') {
+
+                sh 'mvn test'
+            }    
         }
 
         container('docker') {
