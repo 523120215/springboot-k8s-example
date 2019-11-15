@@ -1,5 +1,5 @@
 # FROM openjdk:8
-FROM hbstarjason/sw-base:6.1.0
+FROM hbstarjason/sw-base:6.2.0
 
 ADD target/k8s.jar /opt/app.jar
 
