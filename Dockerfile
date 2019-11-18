@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ENV JAVA_OPTS
+ENV JAVA_OPTS=-javaagent:/usr/skywalking/agent/skywalking-agent.jar
 
 ADD target/k8s.jar /opt/app.jar
 
