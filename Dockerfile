@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-env JAVA_OPTS
+ENV JAVA_OPTS
 
 ADD target/k8s.jar /opt/app.jar
 
