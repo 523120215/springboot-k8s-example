@@ -54,3 +54,12 @@ cache:
  # provider: heroku
   # api_key: $HEROKU_API_KEY
   # app: nk-spring-boot-app
+
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: 7f4dc45a19f742dce39cbe4d1e5852fb588593fd
+#  file: app/build/outputs/apk/app-release.apk
+#  skip_cleanup: true
+#  on:
+#    tags: true
