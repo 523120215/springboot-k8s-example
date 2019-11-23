@@ -24,9 +24,9 @@ addons:
 script: 
   - git clone https://github.com/hbstarjason/springboot-k8s-example
   - cd springboot-k8s-example
-  - ./mvn test
-  - ./mvnw clean install -B
-  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
+  - mvn test
+  #- ./mvnw clean install -B
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
   #- mvn clean package -Dmaven.test.skip=true
  
 
