@@ -8,15 +8,15 @@ sudo: false
 before_install:
   - chmod +x ./mvnw
 
-env:
-  global:
-  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
+#env:
+#  global:
+#  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
 
 addons:
   sonarcloud:
     organization: "hbstarjason"
     token:
-      secure: $SONAR_TOKEN
+      secure: a87fdfcbc4f23e420996462816b2765d5281e694
 
 
 # 执行脚本
