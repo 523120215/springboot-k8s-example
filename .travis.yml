@@ -1,6 +1,10 @@
 # 语言
 language: java
-openjdk: 8
+jdk:
+  - openjdk8
+
+before_install:
+ - chmod +x ./mvnw
 
 # 执行脚本
 script: "mvn clean package -Dmaven.test.skip=true -s ./settings.xml"
