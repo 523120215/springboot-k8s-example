@@ -8,14 +8,32 @@ sudo: false
 before_install:
   - chmod +x ./mvnw
 
+env:
+  global:
+  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
+
+addons:
+  sonarcloud:
+    organization: "hbstarjason"
+    token:
+      secure: $SONAR_TOKEN
+
+
 # 执行脚本
 script: 
   - git clone https://github.com/hbstarjason/springboot-k8s-example
   - cd springboot-k8s-example
   - mvn test
-  - mvn clean package -Dmaven.test.skip=true
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
+  #- mvn clean package -Dmaven.test.skip=true
   
-  
+  #- ./mvnw clean install -B
+  #- ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent
+
+after_failure:
+  - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
+  - export TEXT=[datetime]:`date`
+
 # 通知
 notifications:
   email:
@@ -23,7 +41,15 @@ notifications:
       - 305201518@qq.com
     on_success: always # default: change
     on_failure: always # default: always
+
 # 缓存
 cache:
   directories:
     - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
+#
+#deploy:
+ # provider: heroku
+  # api_key: $HEROKU_API_KEY
+  # app: nk-spring-boot-app
