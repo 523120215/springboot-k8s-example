@@ -19,6 +19,8 @@ addons:
     token:
       secure: $SONAR_TOKEN
 
+#services:
+#  - docker
 
 # 执行脚本
 script: 
