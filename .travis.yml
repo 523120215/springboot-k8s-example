@@ -8,28 +8,27 @@ sudo: false
 before_install:
   - chmod +x ./mvnw
 
-#env:
-#  global:
-#  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
+env:
+  global:
+  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
 
 # https://sonarcloud.io/
 addons:
   sonarcloud:
     organization: "hbstarjason"
     token:
-      secure: a87fdfcbc4f23e420996462816b2765d5281e694
+      secure: $SONAR_TOKEN
 
 
 # 执行脚本
 script: 
   - git clone https://github.com/hbstarjason/springboot-k8s-example
   - cd springboot-k8s-example
-  - mvn test
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
+  - ./mvn test
+  - ./mvnw clean install -B
+  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
   #- mvn clean package -Dmaven.test.skip=true
-  
-  #- ./mvnw clean install -B
-  #- ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent
+ 
 
 after_failure:
   - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
