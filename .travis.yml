@@ -12,6 +12,7 @@ before_install:
 #  global:
 #  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
 
+# https://sonarcloud.io/
 addons:
   sonarcloud:
     organization: "hbstarjason"
