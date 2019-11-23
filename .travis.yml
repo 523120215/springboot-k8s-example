@@ -8,16 +8,17 @@ sudo: false
 before_install:
   - chmod +x ./mvnw
 
-env:
-  global:
-  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
+#env:
+#  global:
+#  - secure: "a87fdfcbc4f23e420996462816b2765d5281e694"
+# - COMMIT=${TRAVIS_COMMIT::7}
 
 # https://sonarcloud.io/
 addons:
   sonarcloud:
     organization: "hbstarjason"
     token:
-      secure: $SONAR_TOKEN
+      secure: $SONAR_TOKEN    # Set in travis-ci.org dashboard
 
 #services:
 #  - docker
@@ -64,3 +65,22 @@ cache:
 #  skip_cleanup: true
 #  on:
 #    tags: true
+
+
+# http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html
+
+# before_install
+# install
+# before_script
+# script
+# aftersuccess or afterfailure
+# [OPTIONAL] before_deploy
+# [OPTIONAL] deploy
+# [OPTIONAL] after_deploy
+# after_script
+
+# passed：运行成功，所有步骤的退出码都是0
+# canceled：用户取消执行
+# errored：before_install、install、before_script有非零退出码，运行会立即停止
+# failed ：script有非零状态码 ，会继续运行
+
