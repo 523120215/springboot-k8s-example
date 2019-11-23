@@ -13,7 +13,7 @@ script:
   - git clone https://github.com/hbstarjason/springboot-k8s-example
   - cd springboot-k8s-example
   - mvn test
-  - mvn clean package -Dmaven.test.skip=true"
+  - mvn clean package -Dmaven.test.skip=true
   
   
 # 通知
